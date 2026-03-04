@@ -105,7 +105,6 @@ Webathon_final_submission/
 ├── helper.html             # Provider Workspace: Job management 
 ├── user-dashboard.html     # Customer Hub: Tracking & Status 
 └── assets/                 # Styles and Scripts
----
 ```
 ## ✨ Core Features  
 
