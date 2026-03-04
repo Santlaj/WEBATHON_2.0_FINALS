@@ -20,7 +20,7 @@ Developed with passion during a time-bound Hackathon by:
 - 👨‍💻 Armaan - UI/UX Specialist
 - 👨‍💻 Vedant - Frontend logic
 - 👨‍💻 Santlaj - Backend Integration & Database
-- 👨‍💻 Adarsh  - Map Integration & Frontend 
+- 👨‍💻 Adarsh  - Map Integration & Authentication
 
 ---
 
@@ -104,7 +104,7 @@ Webathon_final_submission/
 ├── index.html              # Entry point: Registration & Requests 
 ├── helper.html             # Provider Workspace: Job management 
 ├── user-dashboard.html     # Customer Hub: Tracking & Status 
-└── assets/                 # Styles, Scripts, and Icons
+└── assets/                 # Styles and Scripts
 ---
 ```
 ## ✨ Core Features  
