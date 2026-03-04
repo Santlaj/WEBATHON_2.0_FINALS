@@ -130,6 +130,20 @@ Webathon_final_submission/
 🚫 No installation required  
 🚫 No dependencies required  
 
+### 💡 Quick Tip for your Firebase Config
+When you paste your API key into `script.js`, it should look something like this:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abcdef123456"
+};
+```
+
 ---
 
 ## 🔮 Future Enhancements  
