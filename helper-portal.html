@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helper Portal</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="css/helper-portal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  
+  
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Helper <span>Portal</span></div>
+    <span id="statusBadge" class="badge offline">
+      <span class="badge-dot"></span> Offline
+    </span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div id="dashboardView">
+    <div id="activeStrip" class="active-strip hidden">
+      <div class="active-strip-left">
+        <div class="strip-icon">🔧</div>
+        <div>
+          <div class="strip-title">Active Job In Progress</div>
+          <div class="strip-sub" id="stripJobType">Plumbing</div>
+        </div>
+      </div>
+      <div class="strip-tag" id="stripTag">Plumbing</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goOnline()">Go Online</button>
+      <button class="btn btn-danger" onclick="goOffline()">Go Offline</button>
+    </div>
+
+    <div id="activeActions" class="btn-row hidden">
+      <button class="btn btn-blue-outline" onclick="openTracking()">📍 Resume Job</button>
+      <button class="btn btn-warn" onclick="cancelJob()">✕ Cancel</button>
+    </div>
+
+    <p id="waitingText">You are offline</p>
+  </div>
+
+  <div id="trackingView" class="hidden">
+    <div class="tracking-header">
+      <button class="btn btn-gray" onclick="returnToDashboard()" style="flex:0;padding:8px 14px;font-size:13px;">← Back</button>
+      <div class="th-left">
+        <div class="th-title">Live Tracking</div>
+        <div class="th-sub" id="trackingJobSub">Service: Plumbing</div>
+      </div>
+      <div class="th-badge" id="trackingJobBadge">🔩 Plumbing</div>
+    </div>
+
+    <div class="timer-bar">
+      <div class="timer-icon">⏱️</div>
+      <div class="timer-body">
+        <div class="timer-label">Service Time Remaining</div>
+        <div class="timer-track">
+          <div class="timer-fill" id="timerFill"></div>
+        </div>
+      </div>
+      <div class="timer-digits" id="timerDigits">15:00</div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-success" onclick="completeJob()">✅ Complete Job</button>
+      <button class="btn btn-warn" onclick="cancelJob()">✕ Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="bookingPopup" class="modal hidden">
+  <div class="modal-box">
+    <h2>New Booking 🔔</h2>
+    <div class="popup-countdown">
+      <div class="ring-wrap">
+        <svg viewBox="0 0 52 52">
+          <circle class="ring-bg" cx="26" cy="26" r="21"/>
+          <circle class="ring-arc" cx="26" cy="26" r="21" id="ringArc"/>
+        </svg>
+        <div class="ring-num" id="ringNum">15</div>
+      </div>
+      <div class="popup-countdown-text">
+        <b>Respond quickly!</b><br>Request auto-cancels if not accepted in time.
+      </div>
+    </div>
+    <div class="modal-meta">
+      <div class="meta-row"><span class="meta-label">Service</span><span class="meta-value" id="popupService">🔩 Plumbing</span></div>
+      <div class="meta-row"><span class="meta-label">Customer</span><span class="meta-value" id="popupCustomer">Rahul M.</span></div>
+      <div class="meta-row"><span class="meta-label">Distance</span><span class="meta-value" id="popupDistance">~1.2 km</span></div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-primary" style="flex:1" onclick="acceptBooking()">Accept</button>
+      <button class="btn btn-gray" onclick="rejectBooking()">Decline</button>
+    </div>
+  </div>
+</div>
+
+<div id="cancelPopup" class="modal hidden">
+  <div class="modal-box">
+    <h2>Cancel Job?</h2>
+    <p>Are you sure you want to cancel this job? The customer will be notified.</p>
+    <div class="modal-btns">
+      <button class="btn btn-danger" style="flex:1;background:#dc2626;color:white;border:none;" onclick="confirmCancel()">Yes, Cancel</button>
+      <button class="btn btn-gray" onclick="dismissCancel()">Go Back</button>
+    </div>
+  </div>
+</div>
+
+<div id="activeJobPopup" class="modal hidden">
+  <div class="modal-box">
+    <h2>Job In Progress 🔧</h2>
+    <p>You already have an active job. Please complete or cancel it before taking another action.</p>
+    <div class="modal-btns">
+      <button class="btn btn-primary" style="flex:1" onclick="$('activeJobPopup').classList.add('hidden'); openTracking()">Go to Job</button>
+      <button class="btn btn-gray" onclick="$('activeJobPopup').classList.add('hidden')">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<div id="completePopup" class="modal hidden">
+  <div class="modal-box">
+    <h2>Complete Job?</h2>
+    <p>Are you sure the service is done? This will mark the job as completed.</p>
+    <div class="modal-btns">
+      <button class="btn btn-success" style="flex:1;background:var(--green);color:white;border:none;" onclick="confirmComplete()">Yes, Complete</button>
+      <button class="btn btn-gray" onclick="dismissComplete()">Go Back</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast">
+  <span class="toast-icon" id="toastIcon"></span>
+  <span id="toastMsg"></span>
+</div>
+
+<script src="js/helper-portal.js"></script>
+</body>
+</html>

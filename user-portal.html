@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Tracker - Track Your Orders</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/user-dashboard.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <h1>📍 Booking Tracker</h1>
+                <p class="subtitle">Track your bookings in real-time</p>
+            </div>
+
+            <div class="booking-form">
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input type="text" id="customerName" placeholder="Enter customer name" />
+                </div>
+                <div class="form-group">
+                    <label>Activity Type</label>
+                    <select id="bookingType">
+                        <option value="Plumbing">🔧 Plumbing</option>
+                        <option value="Electrician">💡 Electrician</option>
+                        <option value="Carpenter">🪚 Carpenter</option>
+                        <option value="Painting">🎨 Painting</option>
+                        <option value="Cleaning">🧹 Cleaning</option>
+                        <option value="AC Repair">❄️ AC Repair</option>
+                        <option value="Appliance Repair">🔌 Appliance Repair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>📍 Address</label>
+                    <input type="text" id="address" placeholder="Enter address" />
+                </div>
+                <button class="btn" onclick="addBooking()">📍 Book & Track</button>
+            </div>
+
+            <div class="bookings-list" id="bookingsList">
+                <div class="bookings-header">
+                    <span>All Bookings</span>
+                    <span class="booking-count" id="bookingCount">0</span>
+                </div>
+                <div class="empty-state">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h6a1 1 0 100-2H7zm0 4a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                    </svg>
+                    <p>No bookings yet</p>
+                    <p style="font-size: 12px; margin-top: 5px;">Create your first booking to get started</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <div class="popup-icon">❓</div>
+            <div class="popup-title">Mark as Inactive?</div>
+            <div class="popup-message">Do you want to mark this booking as inactive?</div>
+            <div class="popup-buttons">
+                <button class="popup-btn popup-btn-cancel" onclick="closePopup()">Cancel</button>
+                <button class="popup-btn popup-btn-confirm" id="confirmDeactivateBtn">Yes, Mark Inactive</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>

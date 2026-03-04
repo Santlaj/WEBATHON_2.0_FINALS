@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Helper | Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <aside class="auth-container">
+        <header>
+            <div class="logo">
+                <div class="logo-dot"></div>
+                SmartHelper
+            </div>
+        </header>
+
+        <div class="panel-toggle">
+            <button id="tab-cust" class="active-customer">Join as Customer</button>
+            <button id="tab-help">Join as Helper</button>
+        </div>
+
+        <section id="panel-cust" class="form-section active">
+            <div class="form-header">
+                <h2 id="cust-title">Create Account</h2>
+                <p id="cust-desc">Book trusted local helpers in seconds.</p>
+            </div>
+            <form id="form-customer">
+                <div class="input-group cust-reg-field">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Alex Johnson" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" name="contact" placeholder="alex@example.com" required>
+                </div>
+                <div class="input-group cust-reg-field">
+                    <label>Location</label>
+                    <input type="text" name="location" placeholder="City, State" required>
+                </div>
+                <div class="grid">
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="pass" required>
+                    </div>
+                    <div class="input-group cust-reg-field">
+                        <label>Confirm</label>
+                        <input type="password" name="confirm">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-customer">
+                    <span class="btn-text" id="cust-btn-text">Get Started</span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+            <div class="action-switcher" id="cust-switcher">
+                Already have an account? <span>Login</span>
+            </div>
+        </section>
+
+        <section id="panel-help" class="form-section">
+            <div class="form-header">
+                <h2 id="help-title" style="color: var(--helper-accent)">Become a Helper</h2>
+                <p id="help-desc">Work on your own terms. Earn more.</p>
+            </div>
+            <form id="form-helper">
+                <div class="input-group help-reg-field">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Sam Smith" required>
+                </div>
+                <div class="grid">
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="helper@email.com" required>
+                    </div>
+                    <div class="input-group help-reg-field">
+                        <label>Experience</label>
+                        <input type="number" name="exp" placeholder="Years" required>
+                    </div>
+                </div>
+                <div class="input-group help-reg-field">
+                    <label>Skills</label>
+                    <select name="skills">
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrician">Electrician</option>
+                        <option value="Carpenter">Carpenter</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Cleaner">Cleaner </option>
+                        <option value="AC Repair">AC Repair</option>
+                        <option value="Appliance Repair">Appliance Repair</option>
+                    </select>
+                </div>
+                <div class="grid">
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="pass" required>
+                    </div>
+                    <div class="input-group help-reg-field">
+                        <label>Confirm</label>
+                        <input type="password" name="confirm">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-helper">
+                    <span class="btn-text" id="help-btn-text">Register as Helper</span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+            <div class="action-switcher" id="help-switcher">
+                Already a helper? <span style="color: var(--helper-accent)">Login</span>
+            </div>
+        </section>
+
+        <div class="admin-link">
+            System Administrator? <span id="open-admin">Admin Portal</span>
+        </div>
+    </aside>
+
+    <main class="visual-side">
+        <div class="floating-card" style="top: 20%; left: 10%; animation-delay: 0s;">
+            <div style="background: #FFF; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;">⭐</div>
+            <div>
+                <strong style="display: block; font-size: 0.9rem;">4.9/5 Rating</strong>
+                <span style="font-size: 0.7rem; opacity: 0.8;">Average Helper Score</span>
+            </div>
+        </div>
+
+        <div class="floating-card" style="bottom: 25%; right: 15%; animation-delay: 1s;">
+            <div style="background: #22C55E; width: 10px; height: 10px; border-radius: 50%;"></div>
+            <span style="font-size: 0.8rem; font-weight: 600;">1,240 Helpers Online</span>
+        </div>
+
+        <div class="hero-content">
+            <h1>The smarter way to get things done.</h1>
+            <p>Our auto-assignment algorithm matches your task with the best available professional in your area instantly.</p>
+        </div>
+    </main>
+
+    <div class="modal" id="admin-modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px;">Admin Login</h2>
+            <form id="form-admin">
+                <div class="input-group"><label>Admin ID</label><input type="text" required></div>
+                <div class="input-group"><label>Passkey</label><input type="password" required></div>
+                <button type="submit" class="btn btn-customer" style="background: var(--admin-accent)">Verify Identity</button>
+            </form>
+            <p id="close-admin" style="text-align: center; margin-top: 15px; font-size: 0.8rem; cursor: pointer; opacity: 0.6;">Cancel</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
