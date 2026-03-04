@@ -83,8 +83,8 @@ Smart Helper is a frontend-based multi-page web application that simulates a rea
 ### Core Technologies
 | Technology | Purpose |
 | :--- | :--- |
-| **HTML5 / CSS3** | [cite_start]Semantic structure and responsive design tokens[cite: 10]. |
-| **JavaScript (ES6+)** | [cite_start]Dynamic DOM manipulation and client-side workflow logic[cite: 11]. |
+| **HTML5 / CSS3** | Semantic structure and responsive design tokens. |
+| **JavaScript (ES6+)** | Dynamic DOM manipulation and client-side workflow logic. |
 | **Leaflet.js** | (Enhanced) Interactive map integration for location tracking. |
 | **LocalStorage API** | Persisting session state across multi-page navigation. |
 
@@ -97,7 +97,7 @@ Smart Helper is a frontend-based multi-page web application that simulates a rea
 ---
 
 ## 📂 System Architecture
-[cite_start]The project is structured as a multi-page web application to simulate a real-world ecosystem[cite: 7, 8]:
+The project is structured as a multi-page web application to simulate a real-world ecosystem:
 
 ```text
 Webathon_final_submission/
