@@ -37,13 +37,13 @@
     </div>
 
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="goOnline()">Go Online</button>
-      <button class="btn btn-danger" onclick="goOffline()">Go Offline</button>
+      <button class="btn btn-primary" id="btnGoOnline">Go Online</button>
+      <button class="btn btn-danger" id="btnGoOffline">Go Offline</button>
     </div>
 
     <div id="activeActions" class="btn-row hidden">
-      <button class="btn btn-blue-outline" onclick="openTracking()">📍 Resume Job</button>
-      <button class="btn btn-warn" onclick="cancelJob()">✕ Cancel</button>
+      <button class="btn btn-blue-outline" id="btnResumeJob">📍 Resume Job</button>
+      <button class="btn btn-warn" id="btnCancelDashboard">✕ Cancel</button>
     </div>
 
     <p id="waitingText">You are offline</p>
@@ -51,7 +51,7 @@
 
   <div id="trackingView" class="hidden">
     <div class="tracking-header">
-      <button class="btn btn-gray" onclick="returnToDashboard()" style="flex:0;padding:8px 14px;font-size:13px;">← Back</button>
+      <button class="btn btn-gray" id="btnBack" style="flex:0;padding:8px 14px;font-size:13px;">← Back</button>
       <div class="th-left">
         <div class="th-title">Live Tracking</div>
         <div class="th-sub" id="trackingJobSub">Service: Plumbing</div>
@@ -73,8 +73,8 @@
     <div id="map"></div>
 
     <div class="btn-row" style="margin-top:14px;">
-      <button class="btn btn-success" onclick="completeJob()">✅ Complete Job</button>
-      <button class="btn btn-warn" onclick="cancelJob()">✕ Cancel</button>
+      <button class="btn btn-success" id="btnCompleteJob">✅ Complete Job</button>
+      <button class="btn btn-warn" id="btnCancelTracking">✕ Cancel</button>
     </div>
   </div>
 </div>
@@ -100,8 +100,8 @@
       <div class="meta-row"><span class="meta-label">Distance</span><span class="meta-value" id="popupDistance">~1.2 km</span></div>
     </div>
     <div class="modal-btns">
-      <button class="btn btn-primary" style="flex:1" onclick="acceptBooking()">Accept</button>
-      <button class="btn btn-gray" onclick="rejectBooking()">Decline</button>
+      <button class="btn btn-primary" style="flex:1" id="btnAcceptBooking">Accept</button>
+      <button class="btn btn-gray" id="btnDeclineBooking">Decline</button>
     </div>
   </div>
 </div>
@@ -111,8 +111,8 @@
     <h2>Cancel Job?</h2>
     <p>Are you sure you want to cancel this job? The customer will be notified.</p>
     <div class="modal-btns">
-      <button class="btn btn-danger" style="flex:1;background:#dc2626;color:white;border:none;" onclick="confirmCancel()">Yes, Cancel</button>
-      <button class="btn btn-gray" onclick="dismissCancel()">Go Back</button>
+      <button class="btn btn-danger" style="flex:1;background:#dc2626;color:white;border:none;" id="btnConfirmCancel">Yes, Cancel</button>
+      <button class="btn btn-gray" id="btnDismissCancel">Go Back</button>
     </div>
   </div>
 </div>
@@ -122,8 +122,8 @@
     <h2>Job In Progress 🔧</h2>
     <p>You already have an active job. Please complete or cancel it before taking another action.</p>
     <div class="modal-btns">
-      <button class="btn btn-primary" style="flex:1" onclick="$('activeJobPopup').classList.add('hidden'); openTracking()">Go to Job</button>
-      <button class="btn btn-gray" onclick="$('activeJobPopup').classList.add('hidden')">Dismiss</button>
+      <button class="btn btn-primary" style="flex:1" id="btnGoToJob">Go to Job</button>
+      <button class="btn btn-gray" id="btnDismissActiveJob">Dismiss</button>
     </div>
   </div>
 </div>
@@ -133,8 +133,8 @@
     <h2>Complete Job?</h2>
     <p>Are you sure the service is done? This will mark the job as completed.</p>
     <div class="modal-btns">
-      <button class="btn btn-success" style="flex:1;background:var(--green);color:white;border:none;" onclick="confirmComplete()">Yes, Complete</button>
-      <button class="btn btn-gray" onclick="dismissComplete()">Go Back</button>
+      <button class="btn btn-success" style="flex:1;background:var(--green);color:white;border:none;" id="btnConfirmComplete">Yes, Complete</button>
+      <button class="btn btn-gray" id="btnDismissComplete">Go Back</button>
     </div>
   </div>
 </div>
@@ -144,6 +144,6 @@
   <span id="toastMsg"></span>
 </div>
 
-<script src="js/helper-portal.js"></script>
+<script type="module" src="js/helper/main.js"></script>
 </body>
 </html>

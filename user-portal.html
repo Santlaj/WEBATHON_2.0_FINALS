@@ -38,7 +38,7 @@
                     <label>📍 Address</label>
                     <input type="text" id="address" placeholder="Enter address" />
                 </div>
-                <button class="btn" onclick="addBooking()">📍 Book & Track</button>
+                <button class="btn" id="btnBookTrack">📍 Book & Track</button>
             </div>
 
             <div class="bookings-list" id="bookingsList">
@@ -68,12 +68,12 @@
             <div class="popup-title">Mark as Inactive?</div>
             <div class="popup-message">Do you want to mark this booking as inactive?</div>
             <div class="popup-buttons">
-                <button class="popup-btn popup-btn-cancel" onclick="closePopup()">Cancel</button>
+                <button class="popup-btn popup-btn-cancel" id="btnPopupCancel">Cancel</button>
                 <button class="popup-btn popup-btn-confirm" id="confirmDeactivateBtn">Yes, Mark Inactive</button>
             </div>
         </div>
     </div>
 
-    <script src="js/user-dashboard.js"></script>
+    <script type="module" src="js/user/main.js"></script>
 </body>
 </html>
